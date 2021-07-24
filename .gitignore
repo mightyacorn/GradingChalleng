@@ -9,5 +9,7 @@ npm-debug.*
 *.orig.*
 web-build/
 
+StarterCode.zip
+
 # macOS
 .DS_Store
