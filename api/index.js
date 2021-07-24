@@ -2,7 +2,11 @@ function clone(objArr) {
   return objArr.map(x => ({...x}))
 }
 
-export function submitMedicationTaken(_medDueId) {
+export function submitMedicationTaken(medDueId) {
+  const med = todaysMedications.find(m => m.id === medDueId)
+  if (med) {
+    med.isTaken = true
+  }
   return Promise.resolve()
 }
 
