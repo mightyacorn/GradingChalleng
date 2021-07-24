@@ -2,12 +2,17 @@ function clone(objArr) {
   return objArr.map(x => ({...x}))
 }
 
+export function submitMedicationTaken(_medDueId) {
+  return Promise.resolve()
+}
+
 export function fetchTodaysMedication () {
   return Promise.resolve(clone(todaysMedications))
 }
 
 const todaysMedications = [
   {
+    id: 32385,
     name: "Vitamin C",
     isTaken: false,
     dueTime: 6,
@@ -15,6 +20,7 @@ const todaysMedications = [
     dosageType: 'tablet'
   },
   {
+    id: 12301,
     name: "Magnesium",
     isTaken: false,
     dueTime: 6,
@@ -22,6 +28,7 @@ const todaysMedications = [
     dosageType: 'tablet'
   },
   {
+    id: 76278,
     name: "Prednisolone",
     isTaken: false,
     dueTime: 6,
@@ -29,6 +36,7 @@ const todaysMedications = [
     dosageType: 'pill'
   },
   {
+    id: 47356,
     name: "Lisinopril",
     isTaken: true,
     dueTime: 6,
@@ -36,6 +44,7 @@ const todaysMedications = [
     dosageType: 'pill'
   },
   {
+    id: 97553,
     name: "Iron",
     isTaken: true,
     dueTime: 6,
@@ -43,6 +52,7 @@ const todaysMedications = [
     dosageType: 'pill'
   },
   {
+    id: 18957,
     name: "Vitamin D",
     isTaken: true,
     dueTime: 6,
@@ -50,6 +60,7 @@ const todaysMedications = [
     dosageType: 'pill'
   },
   {
+    id: 55304,
     name: "Magnesium",
     isTaken: false,
     dueTime: 17,
@@ -57,6 +68,7 @@ const todaysMedications = [
     dosageType: 'tablet'
   },
   {
+    id: 93249,
     name: "Prednisolone",
     isTaken: false,
     dueTime: 17,
