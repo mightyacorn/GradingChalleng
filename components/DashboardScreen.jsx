@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Button, FlatList, Image, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -106,27 +106,8 @@ function AsNeeded () {
 }
 
 function Rewards () {
-  const dispatch = useDispatch()
-  const count = useSelector((state) => state.counter)
-  const message = useSelector((state) => state.message)
-
   return (
     <View style={styles.section}>
-      <Text>Count: {count}</Text>
-      <Button
-        title="increment"
-        onPress={() => dispatch({ type: 'INCREMENT' })}
-      />
-      <Button
-        title="increment async"
-        onPress={() => dispatch({ type: 'INCREMENT_ASYNC' })}
-      />
-      <Button
-        title="decrement"
-        onPress={() => dispatch({ type: 'DECREMENT' })}
-      />
-      <Text>{message}</Text>
-      <Button title="new message" onPress={() => dispatch({ type: 'SAY', message: 'I said it' })} />
       <Text>Earn Rewards</Text>
       <Button title="All Rewards" />
       <Text>80 Points</Text>
