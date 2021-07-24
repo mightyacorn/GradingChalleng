@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     marginRight: 15,
     height: 15,
     width: 15,
-    borderRadius: '100%',
+    borderRadius: 100,
     borderWidth: 1,
     borderColor: 'blue'
   },
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     marginRight: 15,
     height: 15,
     width: 15,
-    borderRadius: '100%',
+    borderRadius: 100,
     backgroundColor: 'blue'
   },
   medication: {
@@ -137,7 +137,7 @@ function Rewards () {
 function buddyItem ({item: buddy}) {
   return (
     <View key={buddy.id} style={styles.buddy}>
-      <Image source={require(`../assets/${buddy.avatarFile}`)} style={{ height: 40, width: 40 }} />
+      <Image source={{uri: buddy.avatarUrl}} style={{ height: 40, width: 40 }} />
       <Text>{buddy.name}</Text>
       <Text>All-time adherence</Text>
       <Text>{String(buddy.adherence).slice(0, 2)}%</Text>

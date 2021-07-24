@@ -73,27 +73,27 @@ const buddyList = [
   {
     id: 211,
     name: 'Arlene Richards',
-    avatarFile: 'Arlene.png'
+    avatarUrl: 'https://i.imgur.com/eYMv4cB.png'
   },
   {
     id: 540,
     name: 'Rebecca Johnson',
-    avatarFile: 'Rebecca.png'
+    avatarUrl: 'https://i.imgur.com/xRLi8Mp.png'
   },
   {
     id: 461,
     name: 'Tushar Gupta',
-    avatarFile: 'Tushar.png'
+    avatarUrl: 'https://i.imgur.com/NCe0yhK.png'
   },
   {
     id: 958,
     name: 'Antonina Bogisich',
-    avatarFile: 'Antonina.png'
+    avatarUrl: 'https://i.imgur.com/eYMv4cB.png'
   },
   {
     id: 246,
     name: 'Dewayne Jaskolski',
-    avatarFile: 'Dewayne.png'
+    avatarUrl: 'https://i.imgur.com/eYMv4cB.png'
   }
 ]
 
