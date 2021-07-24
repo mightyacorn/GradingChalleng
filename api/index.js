@@ -72,15 +72,18 @@ export function fetchBuddies () {
 const buddyList = [
   {
     id: 211,
-    name: 'ArleneRichards'
+    name: 'Arlene Richards',
+    avatarFile: 'Arlene.png'
   },
   {
     id: 540,
-    name: 'Rebecca Johnson'
+    name: 'Rebecca Johnson',
+    avatarFile: 'Rebecca.png'
   },
   {
     id: 461,
-    name: 'Tushar Gupta'
+    name: 'Tushar Gupta',
+    avatarFile: 'Tushar.png'
   }
 ]
 

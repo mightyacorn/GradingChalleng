@@ -1,5 +1,9 @@
 import React from 'react';
-import { Button, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { Button, Image, ScrollView, StyleSheet, Text, View } from 'react-native'
+
+import {fetchBuddies, fetchMedicationAdherence} from '../api'
 
 const styles = StyleSheet.create({
   hr: {
@@ -134,29 +138,30 @@ function Rewards () {
 }
 
 function Buddies () {
+  const [buddyList, setBuddyList] = useState([])
+  useEffect(async () => {
+    let buddies = await fetchBuddies()
+    for (let buddy of buddies) {
+      const adherence = await fetchMedicationAdherence(buddy.id)
+      buddy.adherence = adherence
+    }
+    setBuddyList(buddies)
+  }, [])
+
   return (
     <View style={styles.section}>
       <Text>Check on buddies</Text>
       <Button title="All buddies" />
-      <View style={styles.buddy}>
-        {/* TODO: add avatar */}
-        <Text>Arlene Richards</Text>
-        <Text>All-time adherence</Text>
-        <Text>90%</Text>
-      </View>
-      <View style={styles.buddy}>
-        {/* TODO: add avatar */}
-        <Text>Rebecca Johnson</Text>
-        <Text>All-time adherence</Text>
-        <Text>96%</Text>
-      </View>
-      <View style={styles.buddy}>
-        {/* TODO: add avatar */}
-        <Text>Tushar Gupta</Text>
-        <Text>All-time adherence</Text>
-        <Text>87%</Text>
-      </View>
-
+      {
+        buddyList.map(buddy => (
+          <View style={styles.buddy}>
+            <Image source={require(`../assets/${buddy.avatarFile}`)} style={{height: 40, width: 40}}/>
+            <Text>{buddy.name}</Text>
+            <Text>All-time adherence</Text>
+            <Text>{String(buddy.adherence).slice(0, 2)}%</Text>
+          </View>
+        ))
+      }
     </View>
   )
 }
