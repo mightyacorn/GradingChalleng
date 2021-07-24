@@ -1,9 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import { Provider } from 'react-redux'
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+import store from './store'
 import {DashboardScreen} from './components'
 
 const styles = StyleSheet.create({
@@ -53,15 +55,17 @@ const Tab = createBottomTabNavigator();
 
 export default function App () {
   return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Dashboard" component={DashboardScreen} />
-        <Tab.Screen name="Medications" component={MedicationsScreen} />
-        <Tab.Screen name="Buddies" component={BuddiesScreen} />
-        <Tab.Screen name="Progress" component={ProgressScreen} />
-        <Tab.Screen name="Account" component={AccountScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Tab.Navigator>
+          <Tab.Screen name="Dashboard" component={DashboardScreen} />
+          <Tab.Screen name="Medications" component={MedicationsScreen} />
+          <Tab.Screen name="Buddies" component={BuddiesScreen} />
+          <Tab.Screen name="Progress" component={ProgressScreen} />
+          <Tab.Screen name="Account" component={AccountScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 

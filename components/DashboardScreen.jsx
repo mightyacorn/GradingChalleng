@@ -1,9 +1,6 @@
-import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { Button, Image, ScrollView, StyleSheet, Text, View } from 'react-native'
-
-import {fetchBuddies, fetchMedicationAdherence} from '../api'
+import React, { useState, useEffect } from 'react';
+import { Button, FlatList, Image, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux'
 
 const styles = StyleSheet.create({
   hr: {
@@ -109,25 +106,44 @@ function AsNeeded () {
 }
 
 function Rewards () {
+  const dispatch = useDispatch()
+  const count = useSelector((state) => state.counter)
+  const message = useSelector((state) => state.message)
+
   return (
     <View style={styles.section}>
+      <Text>Count: {count}</Text>
+      <Button
+        title="increment"
+        onPress={() => dispatch({ type: 'INCREMENT' })}
+      />
+      <Button
+        title="increment async"
+        onPress={() => dispatch({ type: 'INCREMENT_ASYNC' })}
+      />
+      <Button
+        title="decrement"
+        onPress={() => dispatch({ type: 'DECREMENT' })}
+      />
+      <Text>{message}</Text>
+      <Button title="new message" onPress={() => dispatch({ type: 'SAY', message: 'I said it' })} />
       <Text>Earn Rewards</Text>
       <Button title="All Rewards" />
       <Text>80 Points</Text>
       <View style={styles.barContainer}>
-        <View style={{backgroundColor: 'orange', position: 'absolute', width: '20%', height: '100%' }} />
+        <View style={{ backgroundColor: 'orange', position: 'absolute', width: '20%', height: '100%' }} />
       </View>
-      <View style={{flexDirection: 'row'}}>
+      <View style={{ flexDirection: 'row' }}>
         <View style={styles.filledCircle} />
         <Text>5 Stars earned</Text>
         <Text>Open the app once a day</Text>
       </View>
-      <View style={{flexDirection: 'row'}}>
+      <View style={{ flexDirection: 'row' }}>
         <View style={styles.filledCircle} />
         <Text>15 Stars earned</Text>
         <Text>3 meds taken</Text>
       </View>
-      <View style={{flexDirection: 'row'}}>
+      <View style={{ flexDirection: 'row' }}>
         <View style={styles.openCircle} />
         <Text>0 Stars earned</Text>
         <Text>Daily health survey</Text>
@@ -137,89 +153,91 @@ function Rewards () {
   )
 }
 
+function buddyItem ({item: buddy}) {
+  return (
+    <View key={buddy.id} style={styles.buddy}>
+      <Image source={require(`../assets/${buddy.avatarFile}`)} style={{ height: 40, width: 40 }} />
+      <Text>{buddy.name}</Text>
+      <Text>All-time adherence</Text>
+      <Text>{String(buddy.adherence).slice(0, 2)}%</Text>
+    </View>
+  )
+}
+
 function Buddies () {
-  const [buddyList, setBuddyList] = useState([])
-  useEffect(async () => {
-    let buddies = await fetchBuddies()
-    for (let buddy of buddies) {
-      const adherence = await fetchMedicationAdherence(buddy.id)
-      buddy.adherence = adherence
-    }
-    setBuddyList(buddies)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch({ type: 'FETCH_BUDDIES' })
   }, [])
+  const buddyList = useSelector(state => state.buddies)
 
   return (
     <View style={styles.section}>
       <Text>Check on buddies</Text>
       <Button title="All buddies" />
-      {
-        buddyList.map(buddy => (
-          <View style={styles.buddy}>
-            <Image source={require(`../assets/${buddy.avatarFile}`)} style={{height: 40, width: 40}}/>
-            <Text>{buddy.name}</Text>
-            <Text>All-time adherence</Text>
-            <Text>{String(buddy.adherence).slice(0, 2)}%</Text>
-          </View>
-        ))
-      }
+      <FlatList
+        data={buddyList.slice(0,3)}
+        renderItem={buddyItem}
+        keyExtractor={buddy => String(buddy.id)}
+      />
     </View>
   )
 }
 
-function RecentHistory() {
+function RecentHistory () {
   return (
     <View style={styles.section}>
       <Text>Past 7 days</Text>
       <Button title="Medication history" />
       <Text>Medication Progress</Text>
-      <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
         <View style={styles.historyDay}>
           <Text>Th</Text>
           <Text>12</Text>
           <View style={styles.barContainer}>
-            <View style={{backgroundColor: 'orange', width: '50%', height: '100%'}}/>
+            <View style={{ backgroundColor: 'orange', width: '50%', height: '100%' }} />
           </View>
         </View>
         <View style={styles.historyDay}>
           <Text>Fri</Text>
           <Text>13</Text>
           <View style={styles.barContainer}>
-            <View style={{backgroundColor: 'orange', width: '100%', height: '100%'}}/>
+            <View style={{ backgroundColor: 'orange', width: '100%', height: '100%' }} />
           </View>
         </View>
         <View style={styles.historyDay}>
           <Text>Sat</Text>
           <Text>14</Text>
           <View style={styles.barContainer}>
-            <View style={{backgroundColor: 'orange', width: '100%', height: '100%'}}/>
+            <View style={{ backgroundColor: 'orange', width: '100%', height: '100%' }} />
           </View>
         </View>
         <View style={styles.historyDay}>
           <Text>Sun</Text>
           <Text>15</Text>
           <View style={styles.barContainer}>
-            <View style={{backgroundColor: 'orange', width: '50%', height: '100%'}}/>
+            <View style={{ backgroundColor: 'orange', width: '50%', height: '100%' }} />
           </View>
         </View>
         <View style={styles.historyDay}>
           <Text>Mon</Text>
           <Text>16</Text>
           <View style={styles.barContainer}>
-            <View style={{backgroundColor: 'orange', width: '50%', height: '100%'}}/>
+            <View style={{ backgroundColor: 'orange', width: '50%', height: '100%' }} />
           </View>
         </View>
         <View style={styles.historyDay}>
           <Text>Tues</Text>
           <Text>17</Text>
           <View style={styles.barContainer}>
-            <View style={{backgroundColor: 'orange', width: '50%', height: '100%'}}/>
+            <View style={{ backgroundColor: 'orange', width: '50%', height: '100%' }} />
           </View>
         </View>
         <View style={styles.historyDay}>
           <Text>Wed</Text>
           <Text>18</Text>
           <View style={styles.barContainer}>
-            <View style={{backgroundColor: 'orange', width: '50%', height: '100%'}}/>
+            <View style={{ backgroundColor: 'orange', width: '50%', height: '100%' }} />
           </View>
         </View>
       </View>

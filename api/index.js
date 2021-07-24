@@ -84,6 +84,16 @@ const buddyList = [
     id: 461,
     name: 'Tushar Gupta',
     avatarFile: 'Tushar.png'
+  },
+  {
+    id: 958,
+    name: 'Antonina Bogisich',
+    avatarFile: 'Antonina.png'
+  },
+  {
+    id: 246,
+    name: 'Dewayne Jaskolski',
+    avatarFile: 'Dewayne.png'
   }
 ]
 
@@ -94,5 +104,7 @@ export function fetchMedicationAdherence(id) {
 const medicationAdherence = {
   211: 90.213,
   540: 95.988,
-  461: 87.002
+  461: 87.002,
+  958: 82.662,
+  246: 80.179
 }
