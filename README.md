@@ -3,6 +3,7 @@
 Welcome to our coding assessment! 
 
 This code represents a basic starting to be used as a baseline for question 1. 
+> Note that if you are only familiar with React (and not React Native) we hope the starter code will provide enough infrastructure for you to still be able to dive in quickly. If it's overwhelming, you can still use web elements (e.g. `div`s) instead of React Native elements, just as you would in a React web app, and still interact with the result in a web browser.
 
 ## Getting Started
 You must have node installed in order to run this code. [Expo](https://expo.io) allows you to preview in browser but if you're familiar you can preview on real or simulated devices as well.
