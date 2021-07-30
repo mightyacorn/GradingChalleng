@@ -3,7 +3,6 @@
 Welcome to our coding assessment! 
 
 This code represents a basic starting to be used as a baseline for question 1. 
-> Note that if you are only familiar with React (and not React Native) we hope the starter code will provide enough infrastructure for you to still be able to dive in quickly. If it's overwhelming, you can still use web elements (e.g. `div`s) instead of React Native elements, just as you would in a React web app, and still interact with the result in a web browser.
 
 ## Getting Started
 You must have node installed in order to run this code. [Expo](https://expo.io) allows you to preview in browser but if you're familiar you can preview on real or simulated devices as well.
@@ -22,5 +21,5 @@ You must have node installed in order to run this code. [Expo](https://expo.io) 
 ## Submission
 1. Populate `discussion.md` with responses to any discussion questions
 2. Create a zip file with your code (it is not necessary to include `node_modules`)
-3. Submit your zip file and your personal details to the assignmend page [here](https://app.mightyacorn.io/patchrx/hiring-challenge#submit)
+3. Submit your zip file and your personal details to the assignmend page [here](https://airtable.com/shrZapiKqKcGO4bkZ)
 
