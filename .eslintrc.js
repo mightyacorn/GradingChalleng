@@ -16,9 +16,11 @@ module.exports = {
   },
   plugins: [
     'react',
+    'react-native',
+    'react-hooks',
   ],
   rules: {
-    'react/style-prop-object': [true, {
+    'react/style-prop-object': [1, {
       allow: ['StatusBar'],
     }],
   },

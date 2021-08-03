@@ -1,12 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import store from './store'
-import {DashboardScreen} from './components'
+import store from './store';
+import { DashboardScreen } from './components';
 
 const styles = StyleSheet.create({
   container: {
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function MedicationsScreen () {
+function MedicationsScreen() {
   return (
     <View style={styles.container}>
       <Text>Medications</Text>
@@ -25,7 +25,7 @@ function MedicationsScreen () {
     </View>
   );
 }
-function BuddiesScreen () {
+function BuddiesScreen() {
   return (
     <View style={styles.container}>
       <Text>Buddies</Text>
@@ -33,7 +33,7 @@ function BuddiesScreen () {
     </View>
   );
 }
-function ProgressScreen () {
+function ProgressScreen() {
   return (
     <View style={styles.container}>
       <Text>Progress</Text>
@@ -41,7 +41,7 @@ function ProgressScreen () {
     </View>
   );
 }
-function AccountScreen () {
+function AccountScreen() {
   return (
     <View style={styles.container}>
       <Text>Account</Text>
@@ -50,10 +50,9 @@ function AccountScreen () {
   );
 }
 
-
 const Tab = createBottomTabNavigator();
 
-export default function App () {
+export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
@@ -68,5 +67,3 @@ export default function App () {
     </Provider>
   );
 }
-
-
